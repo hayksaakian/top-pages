@@ -1,0 +1,23 @@
+{
+  "name": "top-pages",
+  "version": "0.0.1",
+  "description": "Retreive a list of the most popular pages from a given domain along with their estimated monthly traffic",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hayksaakian/top-pages.git"
+  },
+  "keywords": [
+    "analytics",
+    "seo"
+  ],
+  "author": "Hayk Saakian",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hayksaakian/top-pages/issues"
+  },
+  "homepage": "https://github.com/hayksaakian/top-pages#readme"
+}
