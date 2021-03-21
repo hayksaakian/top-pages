@@ -7,6 +7,8 @@
 
 let ga = require('./google-analytics.js')
 
+let spyfu = require('./spyfu.js')
+
 async function test_ga(website_url, options={}) {
   let top_pages = await ga.get_top_pages(website_url, options)
   console.log(website_url,'top pages according to Google Analytics:')
@@ -18,6 +20,13 @@ async function test_ga_error() {
   console.log(top_pages)
 }
 
+async function test_spyfu(website_url) {
+  let top_pages = await spyfu.get_top_pages(website_url)
+  console.log(website_url, 'top pages according to Spyfu:')
+  console.log(top_pages)
+  
+}
+
 async function run() {
   // test without a view ID
   // await test_ga('https://www.hayksaakian.com')
@@ -27,6 +36,8 @@ async function run() {
 
   // test with a view we don't have access to
   // await test_ga_error()
+
+  await test_spyfu('https://www.hayksaakian.com')
 
 }
 

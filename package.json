@@ -22,8 +22,8 @@
   "homepage": "https://github.com/hayksaakian/top-pages#readme",
   "dependencies": {
     "googleapis": "^68.0.0",
+    "got": "^11.8.2",
     "moment": "^2.29.1",
-    "node-simple-ga": "^0.5.1",
     "psl": "^1.8.0"
   }
 }
