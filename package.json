@@ -4,7 +4,7 @@
   "description": "Retreive a list of the most popular pages from a given domain along with their estimated monthly traffic",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",
