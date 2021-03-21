@@ -7,8 +7,8 @@
 
 let ga = require('./google-analytics.js')
 
-async function test_ga(website_url) {
-  let top_pages = await ga.get_top_pages(website_url)
+async function test_ga(website_url, options={}) {
+  let top_pages = await ga.get_top_pages(website_url, options)
   console.log(website_url,'top pages according to Google Analytics:')
   console.log(top_pages)
 }
@@ -19,7 +19,13 @@ async function test_ga_error() {
 }
 
 async function run() {
-  await test_ga('https://www.hayksaakian.com')  
+  // test without a view ID
+  // await test_ga('https://www.hayksaakian.com')
+
+  // test WITH a view ID
+  // await test_ga('https://www.hayksaakian.com', { 'viewId': '208072427'})
+
+  // test with a view we don't have access to
   // await test_ga_error()
 
 }

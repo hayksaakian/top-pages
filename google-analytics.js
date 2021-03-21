@@ -88,6 +88,8 @@ async function get_top_pages(websiteUrl, options={}) {
   if (rows) {
     const websiteOrigin = origin_from_url(websiteUrl);
 
+    rows.sort((a, b) => b[1] - a[1])
+
     return rows.reduce((acc, value) => {
       let key = websiteOrigin + value[0];
       if (!acc[key]) {
