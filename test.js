@@ -5,8 +5,10 @@
 // list of URL: Users pairs
 // scoped to the last 30 days or last month
 
-let ga = require('./google-analytics.js')
+let ga_keys = require('./keys.json')
 
+let ga = require('./google-analytics.js')
+let tp = require('./index.js')
 let spyfu = require('./spyfu.js')
 
 async function test_ga(website_url, options={}) {
@@ -27,6 +29,18 @@ async function test_spyfu(website_url) {
   
 }
 
+async function test_tp(website_url) {
+  let top_pages = await tp(website_url, {ga_keys: ga_keys})
+  console.log(website_url, 'top pages with GA Keys')
+  console.log(top_pages)  
+}
+
+async function test_tp_no_ga_keys(website_url) {
+  let top_pages = await tp(website_url)
+  console.log(website_url, 'top pages without GA Keys')
+  console.log(top_pages)
+}
+
 async function run() {
   // test without a view ID
   // await test_ga('https://www.hayksaakian.com')
@@ -37,7 +51,16 @@ async function run() {
   // test with a view we don't have access to
   // await test_ga_error()
 
-  await test_spyfu('https://www.hayksaakian.com')
+  // await test_spyfu('https://www.hayksaakian.com')
+
+  // test with existing GA access
+  // test_tp('https://www.hayksaakian.com')
+
+  // test with no GA access
+  // await test_tp('https://www.example.com')
+  
+  // test with no GA access, without supplying keys
+  await test_tp_no_ga_keys('https://www.example.com')
 
 }
 

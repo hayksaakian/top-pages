@@ -6,7 +6,11 @@ const gaKeys = require('./keys.json')
 
 const scopes = 'https://www.googleapis.com/auth/analytics.readonly';
 
-const jwt = new google.auth.JWT(gaKeys.client_email, null, gaKeys.private_key, scopes)
+let jwt = new google.auth.JWT(gaKeys.client_email, null, gaKeys.private_key, scopes)
+
+async function set_jwt(ga_keys) {
+  jwt = new google.auth.JWT(ga_keys.client_email, null, ga_keys.private_key, scopes)
+}
 
 async function get_profile_list() {
   let profiles = []
@@ -71,7 +75,8 @@ async function get_top_pages(websiteUrl, options={}) {
   }
   if(!viewId){
     // throw an error since we can't get any data without a view ID
-    throw new Error('No View ID specified, and no View ID found for website URL:', websiteUrl)
+    console.warn(`No View ID specified, and no View ID found for website URL: ${websiteUrl}`)
+    return []
   }
 
   await jwt.authorize()
@@ -107,5 +112,6 @@ async function get_top_pages(websiteUrl, options={}) {
 
 module.exports = {
   get_top_pages,
-  validate_view_id
+  validate_view_id,
+  set_jwt
 }
