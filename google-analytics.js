@@ -6,7 +6,8 @@ const gaKeys = require('./keys.json')
 
 const scopes = 'https://www.googleapis.com/auth/analytics.readonly';
 
-let jwt = new google.auth.JWT(gaKeys.client_email, null, gaKeys.private_key, scopes)
+let jwt;
+//  = new google.auth.JWT(gaKeys.client_email, null, gaKeys.private_key, scopes)
 
 async function set_jwt(ga_keys) {
   jwt = new google.auth.JWT(ga_keys.client_email, null, ga_keys.private_key, scopes)
@@ -54,6 +55,9 @@ async function validate_view_id(viewId) {
 }
 
 async function get_top_pages(websiteUrl, options={}) {
+  if (!jwt && options.ga_keys) {
+    await set_jwt(options.ga_keys)
+  }
   let viewId = options['viewId'] || null
   if(!viewId){
     // note: this is a data security issue if you have a multi user application

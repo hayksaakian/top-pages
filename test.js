@@ -17,7 +17,8 @@ async function test_ga(website_url, options={}) {
   console.log(top_pages)
 }
 async function test_ga_error() {
-  let top_pages = await ga.get_top_pages("https://www.example-of-a-website-we-cannot-access.com/")
+  let website_url = "https://www.example-of-a-website-we-cannot-access.com/"
+  let top_pages = await ga.get_top_pages(website_url, { ga_keys: ga_keys })
   console.log(website_url, 'top pages according to Google Analytics:')
   console.log(top_pages)
 }
@@ -31,8 +32,8 @@ async function test_spyfu(website_url) {
 
 async function test_tp(website_url) {
   let top_pages = await tp(website_url, {ga_keys: ga_keys})
-  console.log(website_url, 'top pages with GA Keys')
-  console.log(top_pages)  
+  console.log(website_url, 'top pages, GA Keys loaded')
+  console.log(top_pages)
 }
 
 async function test_tp_no_ga_keys(website_url) {
@@ -43,24 +44,27 @@ async function test_tp_no_ga_keys(website_url) {
 
 async function run() {
   // test without a view ID
-  // await test_ga('https://www.hayksaakian.com')
+  await test_ga('https://www.hayksaakian.com', { ga_keys: ga_keys })
 
   // test WITH a view ID
-  // await test_ga('https://www.hayksaakian.com', { 'viewId': '208072427'})
+  await test_ga('https://www.hayksaakian.com', { 'viewId': '208072427', ga_keys: ga_keys})
 
   // test with a view we don't have access to
-  // await test_ga_error()
+  await test_ga_error()
 
-  // await test_spyfu('https://www.hayksaakian.com')
+  await test_spyfu('https://www.hayksaakian.com')
 
   // test with existing GA access
-  // test_tp('https://www.hayksaakian.com')
+  test_tp('https://www.hayksaakian.com')
 
   // test with no GA access
-  // await test_tp('https://www.example.com')
-  
+  await test_tp('https://www.example.com')
+
   // test with no GA access, without supplying keys
   await test_tp_no_ga_keys('https://www.example.com')
+
+  // test nonexistant website, with no GA access, without supplying keys
+  await test_tp_no_ga_keys('https://www.exampleofnonexistantwebsitedomain.com')
 
 }
 

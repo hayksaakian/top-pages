@@ -5,7 +5,6 @@ async function top_pages(url, options={}) {
   let spyfu = require('./spyfu.js')
   let pages = []
   if(options.ga_keys){
-    google_analytics.set_jwt(options.ga_keys)
     // try GA first. TODO: cache this.
     try {
       pages = await google_analytics.get_top_pages(url, options)
