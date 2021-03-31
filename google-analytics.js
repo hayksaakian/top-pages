@@ -2,8 +2,6 @@ const { origin_from_url } = require('./helpers/common');
 
 const { google } = require('googleapis');
 
-const gaKeys = require('./keys.json')
-
 const scopes = 'https://www.googleapis.com/auth/analytics.readonly';
 
 let jwt;
