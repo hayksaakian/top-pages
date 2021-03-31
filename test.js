@@ -66,6 +66,8 @@ async function run() {
   // test nonexistant website, with no GA access, without supplying keys
   await test_tp_no_ga_keys('https://www.exampleofnonexistantwebsitedomain.com')
 
+  // test without HTTPs
+  await test_tp_no_ga_keys('example.com')
 }
 
 // run tests

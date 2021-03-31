@@ -9,8 +9,13 @@ function hostname_from_url(url) {
 }
 
 function origin_from_url(url) {
-  // return psl.get(new URL(url).hostname)
-  return new URL(url).origin
+  // need a way to handle this if we already specified a domain to begin with
+  if (url.toLowerCase().indexOf('http') == 0) {
+    // if url starts with http
+    return new URL(url).origin
+  }
+  // assuming you specified a domain if it doesn't start with http
+  return url
 }
 
 function trim_non_alphanumeric(str) {
