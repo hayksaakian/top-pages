@@ -52,10 +52,10 @@ async function run() {
   // test with a view we don't have access to
   await test_ga_error()
 
-  await test_spyfu('https://www.hayksaakian.com')
+  await test_spyfu('https://ryanknorrlawncare.com/simplelawnguide/')
 
   // test with existing GA access
-  test_tp('https://www.hayksaakian.com')
+  await test_tp('https://www.hayksaakian.com')
 
   // test with no GA access
   await test_tp('https://www.example.com')

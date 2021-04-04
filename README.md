@@ -34,6 +34,12 @@ let top_url_views = top_pages[top_url]
 
 ```
 
+## Use Cases
+
+I use this package in my amazon [Affiliate Link Fixer](https://affiliatelinkfixer.com/) to help users prioritize their most popular pages.
+
+You could also use this for quick competitive analysis to find the most popular contant among a list of websites.
+
 # Google Analytics Integration
 Use Google Analytics by placing a keys.json file and loading it.
 
@@ -62,4 +68,6 @@ However, this also means you might not need all the data and it can be achieved 
 - filtering or 
 - limiting the amount of pages.
 
+### Limitations
 
+SpyFu only returns the top 5 results when you're not logged in.
