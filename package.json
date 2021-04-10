@@ -1,6 +1,6 @@
 {
   "name": "top-pages",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Retreive a list of the most popular pages from a given domain along with their estimated monthly traffic",
   "main": "index.js",
   "scripts": {

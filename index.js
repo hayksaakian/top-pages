@@ -12,7 +12,8 @@ async function top_pages(url, options={}) {
       console.log(error)
     }
   }
-  if(pages.length > 0){
+  // console.log('pages.length is ', Object.keys(pages).length)
+  if(Object.keys(pages).length > 0){
     return pages
   }
   // if we get nothing from GA, try spyfu

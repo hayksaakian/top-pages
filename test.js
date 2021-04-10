@@ -30,8 +30,9 @@ async function test_spyfu(website_url) {
   
 }
 
-async function test_tp(website_url) {
-  let top_pages = await tp(website_url, {ga_keys: ga_keys})
+async function test_tp(website_url, options={}) {
+  options.ga_keys = ga_keys
+  let top_pages = await tp(website_url, options)
   console.log(website_url, 'top pages, GA Keys loaded')
   console.log(top_pages)
 }
@@ -54,8 +55,11 @@ async function run() {
 
   await test_spyfu('https://ryanknorrlawncare.com/simplelawnguide/')
 
-  // test with existing GA access
-  await test_tp('https://www.hayksaakian.com')
+  // test with existing GA access, specifying a view
+  await test_tp('https://www.hayksaakian.com', { 'viewId': '208072427', ga_keys: ga_keys })
+
+  // test with existing GA access, not specifying a view
+  await test_tp('https://www.hayksaakian.com', { ga_keys: ga_keys })
 
   // test with no GA access
   await test_tp('https://www.example.com')
