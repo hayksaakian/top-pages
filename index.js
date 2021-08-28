@@ -1,8 +1,8 @@
 // index.js
 let google_analytics = require('./google-analytics.js')
+let spyfu = require('./spyfu.js')
 
 async function top_pages(url, options={}) {
-  let spyfu = require('./spyfu.js')
   let pages = []
   if(options.ga_keys){
     // try GA first. TODO: cache this.
@@ -21,5 +21,6 @@ async function top_pages(url, options={}) {
   return pages
 }
 
+top_pages.spyfu = spyfu
 
 module.exports = top_pages

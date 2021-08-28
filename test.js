@@ -62,6 +62,8 @@ async function run() {
 
   await test_spyfu('https://ryanknorrlawncare.com/simplelawnguide/')
 
+  await test_raw_spyfu('https://www.logicinbound.com/')
+
   // test with existing GA access, specifying a view
   await test_tp('https://www.hayksaakian.com', { 'viewId': '208072427', ga_keys: ga_keys })
 
@@ -82,6 +84,6 @@ async function run() {
 }
 
 // run tests
-// run()
+run()
 
-test_raw_spyfu('https://www.logicinbound.com/')
+

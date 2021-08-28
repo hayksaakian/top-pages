@@ -22,9 +22,9 @@ async function get_raw_data(websiteUrl) {
       },
       responseType: 'json'
     }
-    console.log('request options', options)
+    // console.log('request options', options)
     const response = await got('https://www.spyfu.com/NsaApi/Serp/GetTopPages', options)
-    console.log(response.body);
+    // console.log(response.body);
     //=> '<!doctype html> ...'
     raw_pages = response.body.topPages
   } catch (error) {
