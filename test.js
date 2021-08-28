@@ -30,6 +30,13 @@ async function test_spyfu(website_url) {
   
 }
 
+async function test_raw_spyfu(website_url) {
+  let top_pages = await spyfu.get_raw_data(website_url)
+  console.log(website_url, 'raw top pages according to Spyfu:')
+  console.log(top_pages)
+}
+
+
 async function test_tp(website_url, options={}) {
   options.ga_keys = ga_keys
   let top_pages = await tp(website_url, options)
@@ -75,4 +82,6 @@ async function run() {
 }
 
 // run tests
-run()
+// run()
+
+test_raw_spyfu('https://www.logicinbound.com/')
