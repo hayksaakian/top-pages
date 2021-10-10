@@ -55,11 +55,23 @@ async function get_raw_data(websiteUrl, config = {}) {
     }
 
     // TODO: specify pageSize and row
-    let responseData = await get_top_pages_from_spyfu(domain, {
-      cookies,
-    });
+    const pageSize = config.pageSize ? config.pageSize : 200;
+    let loop = 1;
+    if (pageSize > 1000) {
+      loop = Math.ceil(pageSize/1000);
+    }
 
-    raw_pages = responseData.topPages
+    for (let i = 1; i <= loop; i++) {
+      let responseData = await get_top_pages_from_spyfu(domain, {
+        cookies,
+        pageSize,
+        startingRow: i,
+      });
+      let topPages = responseData.topPages.length ? responseData.topPages : [];
+
+      raw_pages = [...raw_pages, ...topPages];
+    }
+
   } catch (error) {
     console.log(error);
   }

@@ -76,13 +76,14 @@ async function topPages(cookies) {
 
 // topPages();
 async function init() {
-  let topPages = await top_pages('https://www.hayksaakian.com', {
+  let topPages = await top_pages('http://www.catchnews.com', {
     username: 'admin@logicinbound.com',
     password: '65S$OUjE%U2a',
+    pageSize: 1500,
   });
 
   console.log('top pages');
-  console.log(topPages)
+  console.log(topPages, Object.keys(topPages).length)
 
 
   // let cookies = await login();

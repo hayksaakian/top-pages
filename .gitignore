@@ -95,3 +95,4 @@ static/temp
 # ignore the keys file from Google Analytics
 keys.json
 
+devtest.js
