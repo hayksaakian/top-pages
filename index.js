@@ -16,8 +16,11 @@ async function top_pages(url, options={}) {
   if(Object.keys(pages).length > 0){
     return pages
   }
+  // check options to get spyfu logins
+
+
   // if we get nothing from GA, try spyfu
-  pages = await spyfu.get_top_pages(url)
+  pages = await spyfu.get_top_pages(url, options)
   return pages
 }
 

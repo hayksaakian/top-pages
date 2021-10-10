@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/hayksaakian/top-pages#readme",
   "dependencies": {
+    "axios": "^0.22.0",
     "googleapis": "^68.0.0",
     "got": "^11.8.2",
     "moment": "^2.29.1",
