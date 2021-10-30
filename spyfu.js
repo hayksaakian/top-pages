@@ -7,8 +7,8 @@ async function login({username, password}) {
   console.log('logging in to spyfu...')
 
   const response = await axios.post('https://www.spyfu.com/auth/login', {
-    username: 'admin@logicinbound.com',
-    password: '65S$OUjE%U2a',
+    username: username,
+    password: password,
     rememberMe: false,
   });
   const cookies = response.headers['set-cookie'];
